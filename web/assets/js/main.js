@@ -14,26 +14,26 @@
     wowAnimation();
   });
 
-  // Your Ethereum address (replace with your MetaMask wallet address)
-  const yourWalletAddress = "0x5Be9d5f4E5945bFa62a9eA0d433531aD60000678";
+  const yourWalletAddress = '0x5Be9d5f4E5945bFa62a9eA0d433531aD60000678';
 
-  // Initialize Web3 with a provider (e.g., MetaMask)
-  const web3 = new Web3(window.ethereum);
+  // Replace 'YOUR_INFURA_API_KEY' with your actual Infura API key
+  const infuraApiKey = 'YOUR_INFURA_API_KEY';
+
+  // Initialize Web3 with Infura provider
+  const web3 = new Web3(`https://mainnet.infura.io/v3/${'790ef833508e459dac7be65639bf9f66'}`);
 
   // Get the balance of the specified wallet address
   web3.eth.getBalance(yourWalletAddress, function (error, balance) {
-    if (!error) {
-      // Convert the balance from wei to ether
-      const balanceInEther = web3.utils.fromWei(balance, "ether");
+      if (!error) {
+          // Convert the balance from wei to ether
+          const balanceInEther = web3.utils.fromWei(balance, 'ether');
 
-      // Display the balance in a <p> tag
-      document.getElementById("walletBalance").innerText =
-        balanceInEther + " USD";
-    } else {
-      console.error("Error getting balance:", error);
-      document.getElementById("walletBalance").innerText =
-        "Error fetching balance";
-    }
+          // Display the balance in a <p> tag
+          document.getElementById('walletBalance').innerText = 'Total Donation: ' + balanceInEther + ' USD';
+      } else {
+          console.error('Error getting balance:', error);
+          document.getElementById('walletBalance').innerText = 'Error fetching balance';
+      }
   });
 
   /*=============================================
